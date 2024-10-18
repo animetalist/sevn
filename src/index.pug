@@ -1,0 +1,155 @@
+extends ./pug/layout.pug
+
+block content
+  header.header.container
+    .header_inner
+      a(href="#top")
+        img.header_logo(src='./img/logo.svg', width='140' height='49' alt='Sevn Group')
+      ul.header_menu
+        li.header_menu_item
+          a.header_menu_link(href="#about") About us
+        li.header_menu_item
+          a.header_menu_link(href="#products") Products
+        li.header_menu_item
+          a.header_menu_link(href="#warehouse") Warehouse
+        li.header_menu_item
+          a.header_menu_link(href="#clients") Clients
+      a.header_btn(href="mailto:y.puzanov@sevngroup.site" rel="noreferrer") Write to us
+      button.header_hamb(type='button' aria-label='Menu')
+        span.header_hamb_icon(aria-label='Icon')
+  main.main
+    section#top.hero
+      img.hero_bg(src='./img/hero.webp', width='1920' height='1280' alt='Warehouse' srcset='./img/hero_sm.webp 540w, ./img/hero.webp 1920w' sizes='(max-width: 540px) 100vw, 1920px'
+      )
+      .container
+        h1 Sevn Group
+        p.hero_descr
+          | We specialize in servicing international organizations (production of hygiene kits, textile kits, dignity kits, kits for men/women and children — temporarily displaced persons).
+    section#about.container
+      h2 About us
+      .features
+        -
+          const features = [
+            {
+              label: `Outstanding market<br/>reputation`,
+              icon: 'award'
+            },
+            {
+              label: `Personalized approach<br>for each client`,
+              icon: "handshake"
+            },
+            {
+              label: "Extensive experience",
+              icon: "book"
+            },
+            {
+              label: "Expert team",
+              icon: "team"
+            }
+          ]
+        each item in features
+          .features_item
+            svg.features_icon(width='24', height='24')
+              use(xlink:href=`./img/icons.svg#${item.icon}`)
+            span.features_label!= item.label
+      .about
+        .lead
+          p Our company has been working in the humanitarian sector since 2019 and connects people with vital goods. Quality control and assurance team ensures that every product meets the criteria every time.
+          p We have ready-made kits and items packed in kits; their composition can be urgently ordered by humanitarian organizations working in the affected territories. Our high operational assembly capacity lets us quickly prepare the necessary goods for dispatch. We provide solutions for various projects at any time. Also, we are proud that we always respond promptly and efficiently to the needs of our clients and experience logistics, resources, and logistical support for delivering our goods and sets to any point. Our professional planning takes into account the possibility of quick support in emergencies, especially in areas that, for specific reasons, may need urgent humanitarian action. We have an expert and multilingual team capable of developing solutions to meet the needs of our clients.
+          p Our company is always prepared to provide quick support in emergencies. We believe that timely access to necessary, meaningful, and quality goods is crucial for meeting the needs of millions of people worldwide.
+        img.about_pic(src='./img/about.webp', width='640', height='427', alt='Warehouse' loading='lazy')
+    video.video(muted, preload='auto' loop loading='lazy' playsinline)
+      source(src='./sevn_xl.mp4', type='video/mp4' media="(min-width: 1200px)")
+      source(src='./sevn.mp4', type='video/mp4' media="(max-width: 1199.98px)")
+    section#products.container
+      h2 Products
+      -
+        const products = [
+          {
+            label: "Hygiene kits",
+            pic: "hygiene"
+          },
+          {
+            label: "Textile kits",
+            pic: "textile"
+          },
+          {
+            label: "Dignity kits",
+            pic: "dignity"
+          },
+          {
+            label: "Basic necessities",
+            pic: "basic"
+          },
+          {
+            label: "First aid kits",
+            pic: "aid"
+          },
+          {
+            label: "Baby kits",
+            pic: "baby"
+          }
+        ]
+      .products
+        each item in products
+          .products_item
+            img.products_pic(src=`./img/products/${item.pic}.webp`, width='640' height='640', alt='Product' loading='lazy')
+            span.products_label= item.label
+    section#warehouse.warehouse
+      .container
+        div
+          h2 Our warehouse
+          .lead
+            p We understand the need to respond quickly to different situations to reduce the suffering caused by disasters, so we keep in stock a certain amount of goods that, according to estimates, may be needed in emergency situations. We have 5km2 of warehouse space, modern warehouse and packaging equipment, and professional and qualified staff.
+            p Our warehouse is equipped with the most modern technological standards, which allows us to store products efficiently and quickly form kits. Due to automated systems, we ensure high picking accuracy and timely delivery. We pay special attention to high-quality packaging to ensure the safety of the goods during transportation and their safe receipt by the partners.
+        .warehouse_media
+          -for(let i=0; i<6; i++)
+            img.warehouse_pic(src=`./img/warehouse/warehouse${i+1}.webp`, width='640' height='427', alt='Warehouse' loading='lazy')
+    section#clients.container
+      h2 Clients
+      .lead
+        p We serve more than 300 international organizations. Our clients: IFRC, ICRC, UNICEF, IOM, DRC, UNFPA, UNHCR, Medicos del Mundo, International Medical Corporation, TCHU, Medair, PAH.
+        p Our company is committed to being a reliable partner for all our customers, ensuring timely and safe delivery. We conduct our activities with a strong sense of social responsibility, always striving to impact society positively.
+      .clients
+        .clients_content
+          img(src='./img/clients/IFRC.webp', width='200' height='100', alt='IFRC')
+          img(src='./img/clients/ICRC.webp', width='150' height='100', alt='ICRC')
+          img(src='./img/clients/UNICEF.webp', width='200' height='100', alt='UNICEF')
+          img(src='./img/clients/IOM.webp', width='200' height='100', alt='IOM')
+          img(src='./img/clients/DRC.webp', width='100' height='100', alt='DRC')
+          img(src='./img/clients/UNFPA.webp', width='150' height='100', alt='UNFPA')
+          img(src='./img/clients/UNHCR.webp', width='200' height='100', alt='UNHCR')
+          img(src='./img/clients/MdM.webp', width='100' height='100', alt='Medicos del Mundo')
+          img(src='./img/clients/IMC.webp', width='150' height='100', alt='International Medical Corporation')
+          img(src='./img/clients/TCHU.webp', width='100' height='100', alt='TCHU')
+          img(src='./img/clients/Medair.webp', width='200' height='100', alt='Medair')
+          img(src='./img/clients/PAH.webp', width='200' height='100', alt='PAH')
+        .clients_content(aria-hidden="true")
+          img(src='./img/clients/IFRC.webp', width='200' height='100', alt='IFRC')
+          img(src='./img/clients/ICRC.webp', width='150' height='100', alt='ICRC')
+          img(src='./img/clients/UNICEF.webp', width='200' height='100', alt='UNICEF')
+          img(src='./img/clients/IOM.webp', width='200' height='100', alt='IOM')
+          img(src='./img/clients/DRC.webp', width='100' height='100', alt='DRC')
+          img(src='./img/clients/UNFPA.webp', width='150' height='100', alt='UNFPA')
+          img(src='./img/clients/UNHCR.webp', width='200' height='100', alt='UNHCR')
+          img(src='./img/clients/MdM.webp', width='100' height='100', alt='Medicos del Mundo')
+          img(src='./img/clients/IMC.webp', width='150' height='100', alt='International Medical Corporation')
+          img(src='./img/clients/TCHU.webp', width='100' height='100', alt='TCHU')
+          img(src='./img/clients/Medair.webp', width='200' height='100', alt='Medair')
+          img(src='./img/clients/PAH.webp', width='200' height='100', alt='PAH')
+  footer.footer
+    .container.footer_container
+      .footer_inner
+        a(href="#top")
+          img.footer_logo(src='./img/logo-white.svg', width='140' height='49' alt='Sevn Group')
+        .footer_contacts
+          a(href="https://maps.app.goo.gl/rEQUSwRtsARSUSUx7" target="_blank" rel="noreferrer")
+            | 1/12, Winston Churchill street, office 205,
+            br
+            |Kyiv, 02000, Ukrainе
+        .footer_contacts.footer_contacts--email
+          a(href="mailto:y.puzanov@sevngroup.site" rel="noreferrer") y.puzanov@sevngroup.site
+        .footer_contacts
+          a(href="tel:+380444666667") +380 44 466 66 67
+          a(href="tel:+380673392610") +380 67 339 26 10
+      p.footer_copy © 2024 SEVN GROUP. All rights reserved
